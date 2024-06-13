@@ -1,4 +1,4 @@
-Ubuntu image size is 83MB vs alpine 15.7MB. 
+Ubuntu image size is 83MB vs alpine 15.7MB. Secret message is the same in both.
 
 armijuha@lx9-fuxi196:~$ docker pull devopsdockeruh/simple-web-service:alpine
 alpine: Pulling from devopsdockeruh/simple-web-service
@@ -16,3 +16,13 @@ news-article-collection-container-app   latest    5039c844fbef   2 days ago    4
 ubuntu                                  latest    17c0145030df   2 weeks ago   76.2MB
 devopsdockeruh/simple-web-service       ubuntu    4e3362e907d5   3 years ago   83MB
 devopsdockeruh/simple-web-service       alpine    fd312adc88e0   3 years ago   15.7MB
+
+armijuha@lx9-fuxi196:~$ docker run -d -it devopsdockeruh/simple-web-service:alpine
+b3476e3d2dbbedcc4e4047014e23f16eb8559469bfa6cebffce9e74257bc55b5
+armijuha@lx9-fuxi196:~$ docker container ls
+CONTAINER ID   IMAGE                                      COMMAND                 CREATED         STATUS         PORTS     NAMES
+b3476e3d2dbb   devopsdockeruh/simple-web-service:alpine   "/usr/src/app/server"   5 seconds ago   Up 4 seconds             strange_galileo
+armijuha@lx9-fuxi196:~$ docker exec strange_galileo tail -f ./text.log
+2024-06-13 06:44:28 +0000 UTC
+2024-06-13 06:44:30 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
